@@ -5,7 +5,7 @@ import Post from "../Post";
 import { BsStars } from "react-icons/bs";
 
 const styles = {
-  wrapper: `flex-[2] border-r border-l border-[#38444d]`,
+  wrapper: `flex-grow border-r border-l border-[#38444d]`,
   header: `sticky top-0 bg-[#05252e] z-10 p-4 flex justify-between items-center`,
   headerTtile: `text-xl font-bold`,
 };
