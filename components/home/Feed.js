@@ -47,6 +47,7 @@ const Feed = () => {
       <WeittBox />
       {weitts.map((weitt, index) => (
         <Post
+          key={index}
           text={weitt.text}
           avatar={weitt.avatar}
           username={`${weitt.username.slice(0, 4)}...${weitt.username.slice(

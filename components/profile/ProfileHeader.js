@@ -21,7 +21,7 @@ const styles = {
 };
 
 const ProfileHeader = () => {
-  const isProfileImageNft = true;
+  const isProfileImageNft = false;
 
   const currentAccount = "0x638393gf3kwjegw0rhifiuwgfiwf3845495yfbfd";
 
