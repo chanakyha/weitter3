@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Sidebar from "../components/Sidebar";
+import Feed from "../components/home/Feed";
 
 const styles = {
   wrapper: `flex justify-center h-screen w-screen select-none text-white bg-[#002833]`,
@@ -12,11 +13,11 @@ const Home = () => {
     <div className={styles.wrapper}>
       <Head>
         <title>Home</title>
-        <link rel="shortcut icon" href="/assets/svg/favicon.png" />
+        <link rel="shortcut icon" href="/favicon.png" />
       </Head>
       <div className={styles.content}>
         <Sidebar />
-        <h2>Feed</h2>
+        <Feed />
         <h2>Widgets</h2>
       </div>
     </div>

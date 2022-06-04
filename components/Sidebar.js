@@ -16,10 +16,10 @@ import { CgMoreO } from "react-icons/cg";
 
 const styles = {
   wrapper: `flex-[0.7] px-8 flex flex-col`,
-  twitterIconContainer: `text-3xl m-4`,
-  twitterButton: `bg-[#319177] hover:bg-[#7dad9f] flex items-center justify-center font-bold rounded-3xl h-[50px] mt-[20px] cursor-pointer`,
+  weitterIconContainer: `text-3xl m-4`,
+  weitterButton: `bg-[#319177] hover:bg-[#7dad9f] flex items-center justify-center font-bold rounded-3xl h-[50px] mt-[20px] cursor-pointer`,
   navContainer: `flex-1`,
-  profileButton: `flex items-center mb-6 cursor-pointer hover:bg-[#333c45] rounded-[100px] p-2`,
+  profileButton: `flex items-center mb-6 cursor-pointer hover:bg-[#05252e] rounded-[100px] p-2`,
   profileLeft: `flex items-center justify-center mr-4`,
   profileImage: `height-12 w-12 rounded-full`,
   profileRight: `flex-1 flex`,
@@ -34,7 +34,7 @@ const Sidebar = ({ initialSeletedIcon = "Home" }) => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.twitterIconContainer}>
+      <div className={styles.weitterIconContainer}>
         <GiHummingbird />
       </div>
       <div className={styles.navContainer}>
@@ -94,7 +94,7 @@ const Sidebar = ({ initialSeletedIcon = "Home" }) => {
           isActive={Boolean(selected === "More")}
           redirect={"/"}
         />
-        <div className={styles.twitterButton}>Mint</div>
+        <div className={styles.weitterButton}>Mint</div>
       </div>
       <div className={styles.profileButton}>
         <div className={styles.profileLeft}></div>
