@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link";
 import SidebarOptions from "./SidebarOptions";
 import { RiHome7Line, RiHome7Fill, RiFileList2Fill } from "react-icons/ri";
 import { BiHash } from "react-icons/bi";
@@ -15,7 +16,7 @@ import { FaRegListAlt, FaHashtag, FaBell } from "react-icons/fa";
 import { CgMoreO } from "react-icons/cg";
 
 const styles = {
-  wrapper: `flex-[0.7] px-8 flex flex-col`,
+  wrapper: `flex-[1] px-8 flex flex-col`,
   weitterIconContainer: `text-3xl m-4`,
   weitterButton: `bg-[#319177] hover:bg-[#7dad9f] flex items-center justify-center font-bold rounded-3xl h-[50px] mt-[20px] cursor-pointer`,
   navContainer: `flex-1`,
@@ -23,7 +24,8 @@ const styles = {
   profileLeft: `flex items-center justify-center mr-4`,
   profileImage: `height-12 w-12 rounded-full`,
   profileRight: `flex-1 flex`,
-  details: `flex-1`,
+  profileDetails: `flex flex-col`,
+  details: `flex-1 flex space-x-4 items-center`,
   name: `text-lg`,
   handle: `text-[#8899a6]`,
   moreContainer: `flex items-center mr-2`,
@@ -100,8 +102,15 @@ const Sidebar = ({ initialSeletedIcon = "Home" }) => {
         <div className={styles.profileLeft}></div>
         <div className={styles.profileRight}>
           <div className={styles.details}>
-            <div className={styles.name}>Chanakyha</div>
-            <div className={styles.handle}>@0x22df...5xf2df</div>
+            <img
+              src="https://avatars.githubusercontent.com/u/66877639?v=4"
+              alt="profile-pic"
+              className={styles.profileImage}
+            />
+            <div className={styles.profileDetails}>
+              <div className={styles.name}>Chanakyha</div>
+              <div className={styles.handle}>@0x22df...f2df</div>
+            </div>
           </div>
           <div className={styles.moreContainer}>
             <FiMoreHorizontal />

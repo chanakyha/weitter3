@@ -3,7 +3,7 @@ import { news, whoToFollow } from "../assets/static-data/widgetsData";
 import { BiSearch } from "react-icons/bi";
 
 const styles = {
-  wrapper: `flex-[2] p-4`,
+  wrapper: `flex-[1] p-4`,
   searchBar: `flex items-center bg-[#243340] p-2 rounded-3xl`,
   searchIcon: `text-[#8899a6] mr-2`,
   inputBox: `bg-transparent outline-none`,
@@ -36,7 +36,7 @@ const Widgets = () => {
         />
       </div>
       <div className={styles.section}>
-        <div className={styles.title}>Whats Happening..</div>
+        <div className={styles.title}>Whats Happening ?</div>
         {news.map((item, index) => (
           <div key={index} className={styles.item}>
             <div className={styles.newsItemLeft}>
@@ -53,6 +53,26 @@ const Widgets = () => {
           </div>
         ))}
         <div className={styles.showMore}>Show More</div>
+      </div>
+      <div className={styles.section}>
+        <div className={styles.title}>Who to Follow</div>
+        {whoToFollow.map((item, index) => (
+          <div key={index} className={styles.item}>
+            <div className={styles.followAvatarContainer}>
+              <img
+                src={item.avatar}
+                alt={item.handle}
+                className={styles.followAvatar}
+              />
+            </div>
+            <div>
+              <div className={styles.name}>{item.name}</div>
+              <div className={styles.handle}>{item.handle}</div>
+            </div>
+
+            <div className={styles.followButton}>Follow</div>
+          </div>
+        ))}
       </div>
     </div>
   );

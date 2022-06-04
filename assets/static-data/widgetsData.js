@@ -27,20 +27,20 @@ export const news = [
 
 export const whoToFollow = [
   {
-    name: "Rafeh Qazi",
-    handle: "@cleverqazi",
-    avatar:
-      "https://pbs.twimg.com/profile_images/1472075657920221184/JhAI3WGm_400x400.jpg",
+    name: "chanakyha.eth",
+    handle: "@Chanakyha_Vetri",
+    avatar: "https://avatars.githubusercontent.com/u/66877639?v=4",
   },
   {
-    name: "David Rakosi",
-    handle: "@0xDavidRakosi",
+    name: "Prayasu Satapathy",
+    handle: "@PrayasuX_X",
     avatar:
-      "https://pbs.twimg.com/profile_images/1282571486465855491/98xO6N0F_400x400.jpg",
+      "https://pbs.twimg.com/profile_images/1472485885618782208/hNQRjyQ7_400x400.jpg",
   },
   {
-    name: "Sanity.io",
-    handle: "@sanity_io",
-    avatar: "https://avatars.githubusercontent.com/u/17177659?s=280&v=4",
+    name: "Ragul Sankar",
+    handle: "@ragulsankar2004",
+    avatar:
+      "https://pbs.twimg.com/profile_images/1275262061241487360/GXdTeUZM_400x400.jpg",
   },
 ];
