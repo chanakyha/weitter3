@@ -116,7 +116,7 @@ export const WeitterProvider = ({ children }) => {
     const query = `
       *[_type == "weitts"]{
         "author": author->{name, walletAddress, profileImage, isProfileImageNft},
-        tweet,
+        weitt,
         timestamp
       }|order(timestamp desc)
     `;
@@ -138,7 +138,7 @@ export const WeitterProvider = ({ children }) => {
 
       if (item.author.isProfileImageNft) {
         const newItem = {
-          tweet: item.tweet,
+          weitt: item.weitt,
           timestamp: item.timestamp,
           author: {
             name: item.author.name,
@@ -165,7 +165,7 @@ export const WeitterProvider = ({ children }) => {
 
     const query = `
       *[_type == "users" && _id == "${userAccount}"]{
-        "weitts": weitts[]->{timestamp, tweet}|order(timestamp desc),
+        "weitts": weitts[]->{timestamp, weitt}|order(timestamp desc),
         name,
         profileImage,
         isProfileImageNft,

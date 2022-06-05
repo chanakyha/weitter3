@@ -35,7 +35,7 @@ export const userSchema = {
       of: [
         {
           type: "reference",
-          to: [{ type: "tweets" }],
+          to: [{ type: "weitts" }],
         },
       ],
     },

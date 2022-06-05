@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { WeitterContext } from "../context/WeitterContext";
+import Router from "next/router";
 import Link from "next/link";
 import SidebarOptions from "./SidebarOptions";
 import { RiHome7Line, RiHome7Fill, RiFileList2Fill } from "react-icons/ri";
@@ -33,6 +35,9 @@ const styles = {
 
 const Sidebar = ({ initialSeletedIcon = "Home" }) => {
   const [selected, setSelected] = useState(initialSeletedIcon);
+
+  const { currentAccount, currentUser } = useContext(WeitterContext);
+  console.log(currentUser.profileImage);
 
   return (
     <div className={styles.wrapper}>
@@ -96,23 +101,38 @@ const Sidebar = ({ initialSeletedIcon = "Home" }) => {
           isActive={Boolean(selected === "More")}
           redirect={"/"}
         />
-        <div className={styles.weitterButton}>Mint</div>
+        <div
+          onClick={() =>
+            Router.push(`${Router.pathname}/?mint=${currentAccount}`)
+          }
+          className={styles.weitterButton}
+        >
+          Mint
+        </div>
       </div>
       <div className={styles.profileButton}>
-        <div className={styles.profileLeft}></div>
+        <div className={styles.profileLeft}>
+          <img
+            src={currentUser?.profileImage}
+            alt="profile-pic"
+            className={styles.profileImage}
+          />
+        </div>
         <div className={styles.profileRight}>
           <div className={styles.details}>
-            <img
-              src="https://avatars.githubusercontent.com/u/66877639?v=4"
-              alt="profile-pic"
-              className={styles.profileImage}
-            />
             <div className={styles.profileDetails}>
-              <div className={styles.name}>Chanakyha</div>
-              <div className={styles.handle}>@0x22df...f2df</div>
+              <div className={styles.name}>{currentUser.name}</div>
+              <div className={styles.handle}>
+                @{currentAccount.slice(0, 6)}...{currentAccount.slice(-4)}
+              </div>
             </div>
           </div>
           <div className={styles.moreContainer}>
+            {currentUser?.isProfitImageNft && (
+              <span className="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
+                NFT
+              </span>
+            )}
             <FiMoreHorizontal />
           </div>
         </div>

@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import Router from "next/router";
 import { BsArrowLeftShort } from "react-icons/bs";
 import Head from "next/head";
-
+import { WeitterContext } from "../../context/WeitterContext";
 const styles = {
   wrapper: `border-[#38444d] border-b`,
   header: `py-1 px-3 mt-2 flex items-center`,
@@ -21,9 +21,7 @@ const styles = {
 };
 
 const ProfileHeader = () => {
-  const isProfileImageNft = false;
-
-  const currentAccount = "0x638393gf3kwjegw0rhifiuwgfiwf3845495yfbfd";
+  const { currentAccount, currentUser } = useContext(WeitterContext);
 
   return (
     <div className={styles.wrapper}>
@@ -36,12 +34,16 @@ const ProfileHeader = () => {
         </div>
         <div className={styles.details}>
           <div className={styles.primary}>Chanakyha</div>
-          <div className={styles.secondary}>216 Weitts</div>
+          <div className={styles.secondary}>
+            {currentUser && currentUser?.weitts?.length > 1
+              ? `${currentUser?.weitts?.length} Weitts`
+              : `${currentUser?.weitts?.length} Weitts`}
+          </div>
         </div>
       </div>
       <div className={styles.coverPhotoContainer}>
         <img
-          src="https://pbs.twimg.com/profile_banners/1469280409825382405/1639232079/1500x500"
+          src={currentUser?.coverImage}
           alt="background Image"
           className={styles.coverPhoto}
         />
@@ -54,14 +56,14 @@ const ProfileHeader = () => {
             className={styles.profileImage}
           />
         </div>
-        {isProfileImageNft && (
+        {currentUser?.isProfileImageNft && (
           <span className="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
             NFT
           </span>
         )}
       </div>
       <div className={styles.details}>
-        <div className={styles.primary}>Chanakyha</div>
+        <div className={styles.primary}>{currentUser?.name}</div>
         <div className={styles.secondary}>
           {currentAccount && (
             <>

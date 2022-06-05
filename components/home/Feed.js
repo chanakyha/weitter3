@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import WeittBox from "./WeittBox";
 import Post from "../Post";
+import { WeitterContext } from "../../context/WeitterContext";
 
 import { BsStars } from "react-icons/bs";
 
@@ -10,34 +11,9 @@ const styles = {
   headerTtile: `text-xl font-bold`,
 };
 
-const weitts = [
-  {
-    displayName: "Chanakyha",
-    username: "0x638393gf3kwjegw0rhifiuwgfiwf3845495yfbfd",
-    avatar: "https://avatars.githubusercontent.com/u/66877639?v=4",
-    text: "Hello Hi",
-    isProfileImageNft: false,
-    timestamp: "2020-05-05T12:00:00.000Z",
-  },
-  {
-    displayName: "Chanakyha",
-    username: "0x638393gf3kwjegw0rhifiuwgfiwf3845495yfbfd",
-    avatar: "https://avatars.githubusercontent.com/u/66877639?v=4",
-    text: "Hello Hi",
-    isProfileImageNft: false,
-    timestamp: "2020-05-05T12:00:00.000Z",
-  },
-  {
-    displayName: "Chanakyha",
-    username: "0x638393gf3kwjegw0rhifiuwgfiwf3845495yfbfd",
-    avatar: "https://avatars.githubusercontent.com/u/66877639?v=4",
-    text: "Hello Hi",
-    isProfileImageNft: false,
-    timestamp: "2020-05-05T12:00:00.000Z",
-  },
-];
-
 const Feed = () => {
+  const { weitts } = useContext(WeitterContext);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -45,17 +21,20 @@ const Feed = () => {
         <BsStars />
       </div>
       <WeittBox />
-      {weitts.map((weitt, index) => (
-        <Post
-          key={index}
-          text={weitt.text}
-          avatar={weitt.avatar}
-          username={`${weitt.username.slice(0, 4)}...${weitt.username.slice(
-            -4
-          )}`}
-          displayName={weitt.displayName}
-        />
-      ))}
+      {weitts &&
+        weitts.map((weitt, index) => (
+          <Post
+            key={index}
+            text={weitt.weitt}
+            avatar={weitt.author.profileImage}
+            username={`${weitt.author.walletAddress.slice(
+              0,
+              4
+            )}...${weitt.author.walletAddress.slice(-4)}`}
+            displayName={weitt.author.name}
+            isProfitImageNft={weitt.author.isProfitImageNft}
+          />
+        ))}
     </div>
   );
 };

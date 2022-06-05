@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { BsCardImage, BsEmojiSmile } from "react-icons/bs";
 import { RiFileGifLine, RiBarChartHorizontalFill } from "react-icons/ri";
 import { IoMdCalendar } from "react-icons/io";
 import { MdOutlineLocationOn } from "react-icons/md";
+import { client } from "../../assets/client";
+import { WeitterContext } from "../../context/WeitterContext";
 
 const styles = {
   wrapper: `px-4 flex flex-row border-b bg-[#05252e] border-[#38444d] pb-4`,
@@ -20,10 +22,42 @@ const styles = {
 
 const weittBox = () => {
   const [weittMessage, setweittMessage] = useState("");
+  const { currentAccount, fetchweitts, currentUser } =
+    useContext(WeitterContext);
 
-  const postWeitt = (e) => {
+  const postWeitt = async (e) => {
     e.preventDefault();
-    console.log(weittMessage);
+
+    if (!weittMessage) return;
+
+    const weittID = `${currentAccount}-${Date.now()}`;
+
+    const weittDoc = {
+      _type: "weitts",
+      _id: weittID,
+      weitt: weittMessage,
+      timestamp: new Date(Date.now()).toISOString(),
+      author: {
+        _key: weittID,
+        _ref: currentAccount,
+        _type: "reference",
+      },
+    };
+
+    await client.createIfNotExists(weittDoc);
+    await client
+      .patch(currentAccount)
+      .setIfMissing({ tweets: [] })
+      .insert("after", "tweets[-1]", [
+        {
+          _key: weittID,
+          _ref: weittID,
+          _type: "reference",
+        },
+      ])
+      .commit();
+
+    await fetchweitts();
     setweittMessage("");
   };
 
