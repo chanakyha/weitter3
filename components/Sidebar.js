@@ -1,11 +1,13 @@
 import React, { useState, useContext } from "react";
 import { WeitterContext } from "../context/WeitterContext";
 import Router from "next/router";
-import Link from "next/link";
 import SidebarOptions from "./SidebarOptions";
+import Modal from "react-modal";
 import { RiHome7Line, RiHome7Fill, RiFileList2Fill } from "react-icons/ri";
+import { customStyles } from "../assets/static-data/constants";
 import { BiHash } from "react-icons/bi";
 import { FiBell, FiMoreHorizontal } from "react-icons/fi";
+import ProfileImageMinter from "./mintingModal/ProfileImageMinter";
 import {
   BsBookmarkFill,
   BsBookmark,
@@ -137,6 +139,13 @@ const Sidebar = ({ initialSeletedIcon = "Home" }) => {
           </div>
         </div>
       </div>
+      <Modal
+        isOpen={Boolean(Router.query.mint)}
+        onRequestClose={() => Router.back()}
+        style={customStyles}
+      >
+        <ProfileImageMinter />
+      </Modal>
     </div>
   );
 };
