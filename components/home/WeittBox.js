@@ -47,8 +47,8 @@ const weittBox = () => {
     await client.createIfNotExists(weittDoc);
     await client
       .patch(currentAccount)
-      .setIfMissing({ tweets: [] })
-      .insert("after", "tweets[-1]", [
+      .setIfMissing({ weitts: [] })
+      .insert("after", "weitts[-1]", [
         {
           _key: weittID,
           _ref: weittID,
@@ -65,7 +65,7 @@ const weittBox = () => {
     <div className={styles.wrapper}>
       <div className={styles.weittBoxLeft}>
         <img
-          src="https://avatars.githubusercontent.com/u/66877639?v=4"
+          src={currentUser.profileImage}
           alt="profile-image"
           className={styles.profileImage}
         />

@@ -36,7 +36,9 @@ const Home = () => {
   const userLoggedIn = (
     <div className={styles.content}>
       <Sidebar initialSelectedIcon={"Home"} />
-      <Feed />
+      <div className="overflow-y-scroll flex-grow">
+        <Feed />
+      </div>
       <Widgets />
     </div>
   );

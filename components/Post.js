@@ -25,13 +25,13 @@ const Post = ({
   text,
   avatar,
   timestamp,
-  isProfitImageNft,
+  isProfileImageNft,
 }) => {
   return (
     <div className={styles.wrapper}>
       <div>
         <img src={avatar} alt="profile-pic" className={styles.profileImage} />
-        {isProfitImageNft && (
+        {isProfileImageNft && (
           <span className="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
             NFT
           </span>
@@ -40,7 +40,7 @@ const Post = ({
       <div className={styles.postMain}>
         <div className={styles.headerDetails}>
           <span className={styles.name}>{displayName}</span>
-          {isProfitImageNft && (
+          {isProfileImageNft && (
             <span className={styles.verified}>
               <BsFillPatchCheckFill fill="#1DA1F2" />
             </span>

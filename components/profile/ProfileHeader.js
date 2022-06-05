@@ -22,7 +22,7 @@ const styles = {
 
 const ProfileHeader = () => {
   const { currentAccount, currentUser } = useContext(WeitterContext);
-
+  console.log(currentUser);
   return (
     <div className={styles.wrapper}>
       <Head>
@@ -35,7 +35,9 @@ const ProfileHeader = () => {
         <div className={styles.details}>
           <div className={styles.primary}>Chanakyha</div>
           <div className={styles.secondary}>
-            {currentUser && currentUser?.weitts?.length > 1
+            {currentUser && !currentUser.weitts?.length
+              ? `0 weitts`
+              : currentUser?.weitts?.length > 1
               ? `${currentUser?.weitts?.length} Weitts`
               : `${currentUser?.weitts?.length} Weitts`}
           </div>
@@ -51,12 +53,12 @@ const ProfileHeader = () => {
       <div className={styles.profileImageContainer}>
         <div className={styles.profileImageContainer}>
           <img
-            src="https://avatars.githubusercontent.com/u/66877639?v=4"
+            src={currentUser?.profileImage}
             alt="profile-image"
             className={styles.profileImage}
           />
         </div>
-        {currentUser?.isProfileImageNft && (
+        {currentUser.isProfileImageNft && (
           <span className="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
             NFT
           </span>

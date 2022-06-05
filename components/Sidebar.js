@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { WeitterContext } from "../context/WeitterContext";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import SidebarOptions from "./SidebarOptions";
 import Modal from "react-modal";
 import { RiHome7Line, RiHome7Fill, RiFileList2Fill } from "react-icons/ri";
@@ -37,10 +37,9 @@ const styles = {
 
 const Sidebar = ({ initialSeletedIcon = "Home" }) => {
   const [selected, setSelected] = useState(initialSeletedIcon);
-
+  const Router = useRouter();
   const { currentAccount, currentUser } = useContext(WeitterContext);
-  console.log(currentUser.profileImage);
-
+  console.log(currentUser);
   return (
     <div className={styles.wrapper}>
       <div className={styles.weitterIconContainer}>
@@ -130,7 +129,7 @@ const Sidebar = ({ initialSeletedIcon = "Home" }) => {
             </div>
           </div>
           <div className={styles.moreContainer}>
-            {currentUser?.isProfitImageNft && (
+            {currentUser?.isProfileImageNft && (
               <span className="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
                 NFT
               </span>

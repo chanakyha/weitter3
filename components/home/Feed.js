@@ -32,7 +32,7 @@ const Feed = () => {
               4
             )}...${weitt.author.walletAddress.slice(-4)}`}
             displayName={weitt.author.name}
-            isProfitImageNft={weitt.author.isProfitImageNft}
+            isProfileImageNft={weitt.author.isProfileImageNft}
           />
         ))}
     </div>

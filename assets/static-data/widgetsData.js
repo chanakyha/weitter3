@@ -6,12 +6,6 @@ export const news = [
       "https://pbs.twimg.com/semantic_core_img/1532705928687931394/a0zFC-S3?format=jpg&name=900x900",
   },
   {
-    category: "COVID-19 • Trending",
-    title: "Covid-19 in India",
-    image:
-      "https://pbs.twimg.com/semantic_core_img/1255575536824233984/CiLy4der?format=jpg&name=360x360",
-  },
-  {
     category: "Web3.0 • Trending",
     title: "Blockchain developers make over $150k",
     image:
